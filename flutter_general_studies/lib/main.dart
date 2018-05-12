@@ -3,40 +3,21 @@ import 'package:flutter/material.dart';
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
+  final appTitle = 'Web Images';
+
   @override
   Widget build(BuildContext context) {
-    final appTitle = "Orientation Demo";
     return new MaterialApp(
       title: appTitle,
-      home: new OrientationList(title: appTitle),
-    );
-  }
-}
-
-class OrientationList extends StatelessWidget {
-  final String title;
-
-  OrientationList({Key key, this.title}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(title),
+      home: new Scaffold(
+        appBar: new AppBar(
+          title: new Text(appTitle),
+        ),
+        body: new Center(
+          child: new Image.network(
+              "https://www.google.com.br/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png"),
+        ),
       ),
-      body: new OrientationBuilder(builder: (context, orientation) {
-        return new GridView.count(
-          crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
-          children: new List.generate(100, (index) {
-            return new Center(
-              child: new Text(
-                'Item $index',
-                style: Theme.of(context).textTheme.headline,
-              ),
-            );
-          }),
-        );
-      }),
     );
   }
 }
