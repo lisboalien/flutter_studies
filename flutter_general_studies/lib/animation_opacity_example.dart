@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -47,8 +45,8 @@ class _MainScreenState extends State<MainScreen> {
           _visible = !_visible;
         });
       },
-      tooltip: "Toggle Opacity",
-      child: new Icon(Icons.flip),),
+        tooltip: "Toggle Opacity",
+        child: new Icon(Icons.flip),),
     );
   }
 }
