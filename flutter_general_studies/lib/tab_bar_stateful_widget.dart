@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
-
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => new _MyAppState();
@@ -35,7 +33,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
           ]),
         ),
         body: new TabBarView(
-          controller: tabController,
+            controller: tabController,
             children: <Widget>[
               new Center(
                 child: new Icon(Icons.home, size: 128.0, color: Colors.blue,),
