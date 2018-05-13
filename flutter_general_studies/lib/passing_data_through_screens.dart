@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
-void main() => runApp(new MyApp());
-
 class ToDo {
   final String title;
   final String description;
