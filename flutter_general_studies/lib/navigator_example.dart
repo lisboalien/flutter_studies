@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 void main() => runApp(new MaterialApp(
-      title: "Navigation Basics",
-      home: new FirstScreen(),
-    ));
+  title: "Navigation Basics",
+  home: new FirstScreen(),
+));
 
 class FirstScreen extends StatelessWidget {
   @override
