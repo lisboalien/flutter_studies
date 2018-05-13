@@ -5,7 +5,7 @@ void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final title = "Gesture Demo";
+    final title = "InkWell Demo";
     return new MaterialApp(
       title: title,
       home: new MyHomePage(title: title),
@@ -15,9 +15,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   final String title;
-
-  MyHomePage({Key key, this.title}) : super(key:key);
-
+  MyHomePage({Key key, this.title}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -34,21 +32,16 @@ class MyHomePage extends StatelessWidget {
 class MyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new GestureDetector(
-      onTap: (){
-        final snackBar = new SnackBar(content: new Text("Tapped"));
-        Scaffold.of(context).showSnackBar(snackBar);
+    return new InkWell(
+      onTap: () {
+        Scaffold
+            .of(context)
+            .showSnackBar(new SnackBar(content: new Text("Tapped")));
       },
       child: new Container(
         padding: new EdgeInsets.all(12.0),
-        decoration: new BoxDecoration(
-          color: Theme.of(context).buttonColor,
-          borderRadius: new BorderRadius.circular(8.0),
-        ),
-        child: new Text("My Button"),
+        child: new Text("Flat Button"),
       ),
     );
   }
 }
-
-
