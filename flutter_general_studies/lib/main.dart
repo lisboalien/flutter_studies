@@ -7,13 +7,15 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => new _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
-  TabController tabController;
+class _MyAppState extends State<MyApp> {
+  Color textColor;
+  bool checkBoxValue;
 
   @override
   void initState() {
     super.initState();
-    tabController = new TabController(length: 4, vsync: this);
+    textColor = Colors.red;
+    checkBoxValue = false;
   }
 
   @override
@@ -21,38 +23,39 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
     return new MaterialApp(
       home: new Scaffold(
         appBar: new AppBar(
-          title: new Text("TabBar Example"),
-          bottom: new TabBar(controller: tabController, tabs: <Widget>[
-            new Tab(
-              icon: new Icon(Icons.home),
-            ),
-            new Tab(
-              icon: new Icon(Icons.history),
-            ),
-            new Tab(
-              icon: new Icon(Icons.trending_up),
-            ),
-          ]),
+          title: new Text("Checkbox Example"),
         ),
-        body: new TabBarView(
-          controller: tabController,
-            children: <Widget>[
-              new Center(
-                child: new Icon(Icons.home, size: 128.0, color: Colors.blue,),
-              ),
-              new Center(
-                child: new Icon(Icons.history, size: 128.0, color: Colors.blue,),
-              ),
-              new Center(
-                child: new Icon(Icons.trending_up, size: 128.0, color: Colors.blue,),
-              ),
-            ]),
-        bottomNavigationBar: new Material(color: Colors.blueAccent, child: new TabBar(controller: tabController,
-            tabs: <Widget>[
-              new Tab(icon: new Icon(Icons.home),),
-              new Tab(icon: new Icon(Icons.history),),
-              new Tab(icon: new Icon(Icons.trending_up),),
-            ]),),
+        body: new Center(
+            child: new Column(
+          children: <Widget>[
+            new Text("Some term and conditions that you may not wanna read and agree to in order to move to the next step" +
+                "Some term and conditions that you may not wanna read and agree to in order to move to the next step" +
+                "Some term and conditions that you may not wanna read and agree to in order to move to the next step"),
+            new Row(
+              children: <Widget>[
+                new Expanded(
+                    child: new Text(
+                      "Agree to our terms?",
+                      style: new TextStyle(color: textColor),
+                    ),
+                ),
+                new Checkbox(
+                    value: checkBoxValue,
+                    onChanged: (bool checked) {
+                      setState(() {
+                        checkBoxValue = checked;
+                        if(checked == true){
+                          textColor = Colors.green;
+                        } else {
+                          textColor = Colors.red;
+                        }
+                      });
+                    }
+                )
+              ],
+            )
+          ],
+        )),
       ),
     );
   }
